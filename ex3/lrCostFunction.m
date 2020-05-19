@@ -36,14 +36,17 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+% hOfX = column vector, one prediction row per X
+hOfX = sigmoid(X * theta);
 
+J = mean((-1 * y) .* log(hOfX) - (1 - y) .* log(1 - hOfX));
+J += (lambda / (2 * m)) * sum(theta(2 : end) .^ 2);
 
+grad = (1 / m) * sum((hOfX -y) .* X);
 
-
-
-
-
-
+tmp = theta';
+tmp(1, 1) = 0;
+grad = grad + ((lambda / m) * tmp);
 
 % =============================================================
 

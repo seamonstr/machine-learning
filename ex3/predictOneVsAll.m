@@ -31,10 +31,9 @@ X = [ones(m, 1) X];
 %       
 
 
-
-
-
-
+% P is a column vector, one row per example in X, containing the predicted label.
+[mx, p] = max(sigmoid(X * all_theta')');
+p = p';
 
 % =========================================================================
 
